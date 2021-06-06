@@ -240,4 +240,5 @@ class KrakenRestService {
                 .build()
                 .body()) as AccountBalanceInfo
     }
+
 }
