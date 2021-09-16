@@ -22,22 +22,20 @@ class Krak {
         return json.parseText(response)
     }
 
-    private static KrakenApi setKeys(KrakenApi client) {
+    private def setKeys() {
         File file = new File('/home/ghost/projects/bully/107401837507139075.json')
         def jsonObj = file.withReader {reader ->
             return new JsonSlurper().parseText(reader.readLine())
         }
         client.setKey(jsonObj['key'] as String)
         client.setSecret(jsonObj['secret'] as String)
-
-        return client
     }
 
     private Krak() {
         this.client = new KrakenApi()
         this.json = new JsonSlurper()
 
-        client = setKeys(client)
+        setKeys()
     }
 
     static Krak instanceOf() {
